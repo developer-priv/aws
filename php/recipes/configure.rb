@@ -22,10 +22,3 @@ node[:deploy].each do |application, deploy|
     end
   end
 end
-
-node[:deploy].each do |application, deploy|
-  templates_dir = "#{deploy[:deploy_to]}/current/smart/templates_c"
-  execute "chmod -R 777 #{templates_dir}" do
-  end
-end
-
