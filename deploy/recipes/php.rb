@@ -31,5 +31,11 @@ node[:deploy].each do |application, deploy|
   end
 end
 
+node[:deploy].each do |application, deploy|
+  brackets_dir = "#{deploy[:deploy_to]}/current/public/brackets"
+  execute "chmod 777 #{brackets_dir}" do
+  end
+end
+
 
 
