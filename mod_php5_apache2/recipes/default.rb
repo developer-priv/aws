@@ -1,5 +1,12 @@
 include_recipe 'apache2'
 
+#We need to uninstall old php packages because they conflict with newer
+node[:mod_php5_apache2][:packages_remove].each do |pkg|
+  package pkg do
+    action :remove
+  end
+end
+
 node[:mod_php5_apache2][:packages].each do |pkg|
   package pkg do
     action :install

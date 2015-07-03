@@ -57,5 +57,22 @@ when 'rhel'
 end
 
 default[:mod_php5_apache2][:packages] = packages
+default[:mod_php5_apache2][:packages_remove] = [
+    "php-xml",
+    "php-common",
+    "php-xmlrpc",
+    "php-gd",
+    "php-cli",
+    "php-pear-Auth-SASL",
+    "php-mcrypt",
+    "php-pecl-memcache",
+    "php-pear",
+    "php-pear-XML-Parser",
+    "php-pear-DB",
+    "php-pear-HTML-Common",
+    "php",
+    "php-devel",
+    "php-pear-Mail-Mime"
+]
 
 include_attribute "mod_php5_apache2::customize"
