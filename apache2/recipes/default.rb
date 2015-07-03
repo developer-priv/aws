@@ -26,6 +26,14 @@ package 'httpd-tools' do
   action :remove
 end
 
+package 'httpd24' do
+  action :remove
+end
+
+package 'httpd24-tools' do
+  action :remove
+end
+
 execute "Removing old configs" do
   command "rm -rf /etc/httpd"
 end
