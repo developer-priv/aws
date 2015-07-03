@@ -32,9 +32,17 @@ define :web_app, :template => 'web_app.conf.erb', :local => false, :enable => tr
     group node['apache']['root_group']
     mode '0644'
     cookbook params[:cookbook] if params[:cookbook]
+
+    environment_variables = if node[:deploy][application_name].nil?
+                              {}
+                            else
+                              node[:deploy][application_name][:environment_variables]
+                            end
+
     variables(
       :application_name => application_name,
-      :params           => params
+      :params           => params,
+      :environment => OpsWorks::Escape.escape_double_quotes(environment_variables)
     )
     if ::File.exist?("#{node['apache']['dir']}/sites-enabled/#{application_name}.conf")
       notifies :reload, 'service[apache2]', :delayed
