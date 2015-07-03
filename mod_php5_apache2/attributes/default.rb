@@ -72,7 +72,9 @@ default[:mod_php5_apache2][:packages_remove] = [
     "php-pear-HTML-Common",
     "php",
     "php-devel",
-    "php-pear-Mail-Mime"
+    "php-pear-Mail-Mime",
+    "httpd",
+    "httpd-tools"
 ]
 
 include_attribute "mod_php5_apache2::customize"
