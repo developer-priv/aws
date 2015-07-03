@@ -26,6 +26,11 @@ package 'httpd-tools' do
   action :remove
 end
 
+directory "/etc/httpd" do
+  recursive true
+  action :delete
+end
+
 package 'apache2' do
   package_name node['apache']['package']
 end
