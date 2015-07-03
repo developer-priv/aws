@@ -228,6 +228,10 @@ template default_site_config do
   notifies :run, resources(:bash => 'logdir_existence_and_restart_apache2')
 end
 
+file '/etc/httpd/mods-enabled/authz_default.load' do
+  action :delete
+end
+
 include_recipe 'apache2::mod_status'
 include_recipe 'apache2::mod_headers'
 include_recipe 'apache2::mod_alias'
