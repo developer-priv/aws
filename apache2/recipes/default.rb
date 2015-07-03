@@ -17,6 +17,14 @@
 # limitations under the License.
 #
 
+package 'httpd' do
+  action :remove
+end
+
+package 'httpd-tools' do
+  action :remove
+end
+
 package 'apache2' do
   case node[:platform_family]
   when 'rhel'
@@ -225,7 +233,6 @@ include_recipe 'apache2::mod_headers'
 include_recipe 'apache2::mod_alias'
 include_recipe 'apache2::mod_auth_basic'
 include_recipe 'apache2::mod_authn_file'
-include_recipe 'apache2::mod_authz_default' if node[:apache][:version] == '2.2'
 include_recipe 'apache2::mod_authz_groupfile'
 include_recipe 'apache2::mod_authz_host'
 include_recipe 'apache2::mod_authz_user'
