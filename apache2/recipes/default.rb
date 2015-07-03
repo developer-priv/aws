@@ -26,9 +26,8 @@ package 'httpd-tools' do
   action :remove
 end
 
-directory "/etc/httpd" do
-  recursive true
-  action :delete
+execute "Removing old configs" do
+  command "rm -rf /etc/httpd"
 end
 
 package 'apache2' do
