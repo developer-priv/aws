@@ -1,5 +1,5 @@
 #Stop Apache
-execute "Restart Apache" do
+execute "Stop Apache" do
   command "sleep 1 && /sbin/service httpd stop && sleep 1"
 end
 
