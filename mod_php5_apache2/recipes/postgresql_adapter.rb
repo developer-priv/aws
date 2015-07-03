@@ -1,6 +1,3 @@
-package 'php-pgsql' do
-  package_name value_for_platform_family(
-    'rhel' => 'php-pgsql',
-    'debian' => 'php5-pgsql'
-  )
+package 'php55-pgsql' do
+  package_name 'php55-pgsql'
 end

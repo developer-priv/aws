@@ -1,43 +1,5 @@
-###
-# Do not use this file to override the mod_php5_apache2 cookbook's default
-# attributes.  Instead, please use the customize.rb attributes file,
-# which will keep your adjustments separate from the AWS OpsWorks
-# codebase and make it easier to upgrade.
-#
-# However, you should not edit customize.rb directly. Instead, create
-# "mod_php5_apache2/attributes/customize.rb" in your cookbook repository and
-# put the overrides in YOUR customize.rb file.
-#
-# Do NOT create an 'mod_php5_apache2/attributes/default.rb' in your cookbooks. Doing so
-# would completely override this file and might cause upgrade issues.
-#
-# See also: http://docs.aws.amazon.com/opsworks/latest/userguide/customizing.html
-###
-
-packages = []
-
-case node[:platform_family]
-when 'debian'
-  packages = [
-    "php5-xsl",
-    "php5-curl",
-    "php5-xmlrpc",
-    "php5-sqlite",
-    "php5-dev",
-    "php5-gd",
-    "php5-cli",
-    "php5-sasl",
-    "php5-mcrypt",
-    "php5-memcache",
-    "php-pear",
-    "php-xml-parser",
-    "php-mail-mime",
-    "php-db",
-    "php-mdb2",
-    "php-html-common"
-  ]
-when 'rhel'
-  packages = [
+#Packages to be installed
+default[:mod_php5_apache2][:packages] = [
     "php55-xml",
     "php55-common",
     "php55-xmlrpc",
@@ -53,10 +15,9 @@ when 'rhel'
     "php55",
     "php55-devel",
     "php-pear-Mail-Mime"
-  ]
-end
+]
 
-default[:mod_php5_apache2][:packages] = packages
+#We remove everything (even Apache 2.4) to start with clean state
 default[:mod_php5_apache2][:packages_remove] = [
     "php-xml",
     "php-common",
@@ -74,7 +35,17 @@ default[:mod_php5_apache2][:packages_remove] = [
     "php-devel",
     "php-pear-Mail-Mime",
     "httpd",
-    "httpd-tools"
-]
+    "httpd-tools",
 
-include_attribute "mod_php5_apache2::customize"
+    "php55-xml",
+    "php55-common",
+    "php55-xmlrpc",
+    "php55-gd",
+    "php55-cli",
+    "php55-mcrypt",
+    "php55-pecl-memcache",
+    "php55",
+    "php55-devel",
+    "httpd24",
+    "httpd24-tools"
+]

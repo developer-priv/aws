@@ -1,4 +1,11 @@
-include_recipe 'apache2'
+#We clean everything old to make sure we start clean
+execute "Removing old configs" do
+  command "rm -rf /etc/httpd"
+end
+
+execute "Create conf directory" do
+  command "mkdir /etc/httpd"
+end
 
 #We need to uninstall old php packages because they conflict with newer
 node[:mod_php5_apache2][:packages_remove].each do |pkg|
@@ -28,5 +35,3 @@ node[:deploy].each do |application, deploy|
     include_recipe 'mod_php5_apache2::mysql_adapter'
   end
 end
-
-include_recipe 'apache2::mod_php5'

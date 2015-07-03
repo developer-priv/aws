@@ -1,6 +1,3 @@
-package 'php-mysql' do
-  package_name value_for_platform_family(
-    'rhel' => 'php55-mysqlnd',
-    'debian' => 'php5-mysql'
-  )
+package 'php55-mysql' do
+  package_name 'php55-mysqlnd'
 end
