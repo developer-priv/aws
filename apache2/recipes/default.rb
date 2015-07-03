@@ -31,7 +31,7 @@ execute "Removing old configs" do
 end
 
 execute "Create conf directory" do
-  command "md /etc/httpd"
+  command "mkdir /etc/httpd"
 end
 
 package 'apache2' do
