@@ -30,6 +30,10 @@ execute "Removing old configs" do
   command "rm -rf /etc/httpd"
 end
 
+execute "Create conf directory" do
+  command "md /etc/httpd"
+end
+
 package 'apache2' do
   package_name node['apache']['package']
 end
