@@ -19,6 +19,10 @@
 
 if platform_family?('rhel')
   package 'mod_ssl' do
+    action :remove
+  end
+
+  package 'mod24_ssl' do
     action :install
     notifies :run, "execute[generate-module-list]", :immediately
   end
