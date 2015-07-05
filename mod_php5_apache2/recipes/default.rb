@@ -38,3 +38,7 @@ end
 
 #Install newrelic with PHP agent
 include_recipe 'newrelic::php'
+
+execute "Restart Apache" do
+  command "sleep 1 && /sbin/service httpd restart && sleep 1"
+end
