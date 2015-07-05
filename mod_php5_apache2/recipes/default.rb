@@ -35,3 +35,6 @@ node[:deploy].each do |application, deploy|
     include_recipe 'mod_php5_apache2::mysql_adapter'
   end
 end
+
+#Install newrelic with PHP agent
+include_recipe 'newrelic::php'
